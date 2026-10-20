@@ -1,0 +1,32 @@
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# --- Node / Next.js ---
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+npm-debug.log*
+
+# --- Pipeline data ---
+# The SQLite database is rebuilt by `python -m pipeline.run`.
+data/*.db
+data/*.db-journal
+# data/generated/ and data/cache/ ARE committed: the deploy reads them.
+
+# --- OS / editors ---
+.DS_Store
+.idea/
+.vscode/

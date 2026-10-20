@@ -1,0 +1,23 @@
+# API
+flask>=3.0
+flask-cors>=4.0
+gunicorn>=23.0
+
+# Database
+sqlalchemy>=2.0
+
+# Pipeline
+pandas>=2.2
+pydantic>=2.7
+reportlab>=4.2
+pdfplumber>=0.11
+
+# LLM
+anthropic>=0.40
+langgraph>=0.2
+
+# Config
+python-dotenv>=1.0
+
+# Dev
+pytest>=8.0
