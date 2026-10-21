@@ -18,15 +18,16 @@ from typing import Any, Callable
 from db import reset_schema, session_scope
 from models import PipelineRun, RunStatus
 from models.base import utcnow
+from pipeline.parse_csv import parse_harbour
+from pipeline.parse_swift import parse_straits
 
 log = logging.getLogger("pipeline")
 
 Step = Callable[[dict[str, Any]], dict[str, Any]]
 
-# Filled in as each step is built:
-# parse_harbour, parse_meridian, parse_straits, normalize, load,
+# Still to add, in order: parse_meridian (after parse_harbour), normalize, load,
 # reconcile, basis, pnl, propose_fixes
-STEPS: list[Step] = []
+STEPS: list[Step] = [parse_harbour, parse_straits]
 
 
 def start_run() -> int:
@@ -47,7 +48,7 @@ def finish_run(run_id: int, status: RunStatus, counts: dict[str, Any], error: st
 
 
 def summarize(event: dict[str, Any]) -> dict[str, Any]:
-    """Every value a step put on the event under `count_*`, plus timings."""
+    """Every int/dict a step put on the event under `count_*`, plus timings."""
     counts = {k.removeprefix("count_"): v for k, v in event.items() if k.startswith("count_")}
     counts["step_seconds"] = event.get("step_seconds", {})
     return counts

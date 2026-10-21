@@ -1,0 +1,406 @@
+{
+  "_note": "Synthetic. Expected pipeline output, computed from what the files show.",
+  "tax_year": 2025,
+  "tax_rate": "0.2",
+  "base_currency": "USD",
+  "cost_basis_method": "FIFO; unevidenced basis treated as zero (conservative)",
+  "counts": {
+    "transactions_in_files": 63,
+    "by_bank": {
+      "harbour": 41,
+      "meridian": 15,
+      "straits": 7
+    },
+    "securities": 10
+  },
+  "security_names": {
+    "US0378331005": {
+      "harbour": "APPLE INC COM",
+      "straits": "APPLE INC"
+    },
+    "US5949181045": {
+      "harbour": "MICROSOFT CORP COM"
+    },
+    "KYG875721634": {
+      "harbour": "TENCENT HLDGS 0700 HK",
+      "straits": "TENCENT HOLDINGS LTD"
+    },
+    "GB0005405286": {
+      "harbour": "HSBC HLDGS 0005 HK"
+    },
+    "HK0000069689": {
+      "straits": "AIA GROUP LTD"
+    },
+    "SG1L01001701": {
+      "straits": "DBS GROUP HOLDINGS LTD"
+    },
+    "SG1T75931496": {
+      "straits": "SINGAPORE TELECOMMUNICATIONS LTD"
+    },
+    "NL0010273215": {
+      "meridian": "ASML Holding N.V."
+    },
+    "DE0007164600": {
+      "meridian": "SAP SE"
+    },
+    "XS9999LIM016": {
+      "harbour": "PHI 4.25 03/15/30",
+      "meridian": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+      "straits": "PAC HBR INFRA 4.25 2030"
+    }
+  },
+  "expected_exceptions": [
+    {
+      "type": "NAME_CONFLICT",
+      "account_id": "MW-7731",
+      "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+      "resolves_to": "XS9999LIM016",
+      "why": "full legal name not in the securities master; coupon 4.25 and maturity 2030 match"
+    },
+    {
+      "type": "BASIS_MISSING",
+      "account_id": "SC-4420",
+      "isin": "KYG875721634",
+      "date": "2024-06-14",
+      "quantity": "400",
+      "matching_transfer_out": {
+        "account_id": "HPB-001",
+        "date": "2024-06-14",
+        "quantity": "400"
+      },
+      "proposed_lots_hkd": [
+        {
+          "acquired": "2023-02-10",
+          "quantity": "300",
+          "unit_cost": "380"
+        },
+        {
+          "acquired": "2023-09-05",
+          "quantity": "100",
+          "unit_cost": "320"
+        }
+      ],
+      "proposed_basis_hkd": "146000"
+    },
+    {
+      "type": "UNMATCHED_TRANSFER",
+      "account_id": "SC-4420",
+      "isin": "SG1T75931496",
+      "date": "2024-11-05",
+      "quantity": "2000",
+      "counterparty": "KESTREL SECURITIES SG"
+    },
+    {
+      "type": "POSITION_BREAK",
+      "account_id": "MW-7731",
+      "isin": "NL0010273215",
+      "year": 2025,
+      "opening": "120",
+      "net_trades": "-40",
+      "expected_closing": "80",
+      "statement_closing": "70",
+      "difference": "-10"
+    }
+  ],
+  "positions_2025_12_31": [
+    {
+      "account_id": "HPB-001",
+      "isin": "GB0005405286",
+      "quantity": "2000",
+      "currency": "HKD",
+      "market_value": "196000.00",
+      "market_value_usd": "25088.00"
+    },
+    {
+      "account_id": "HPB-001",
+      "isin": "KYG875721634",
+      "quantity": "100",
+      "currency": "HKD",
+      "market_value": "56000.00",
+      "market_value_usd": "7168.00"
+    },
+    {
+      "account_id": "HPB-001",
+      "isin": "US0378331005",
+      "quantity": "200",
+      "currency": "USD",
+      "market_value": "46000.00",
+      "market_value_usd": "46000.00"
+    },
+    {
+      "account_id": "HPB-001",
+      "isin": "US5949181045",
+      "quantity": "100",
+      "currency": "USD",
+      "market_value": "45000.00",
+      "market_value_usd": "45000.00"
+    },
+    {
+      "account_id": "HPB-001",
+      "isin": "XS9999LIM016",
+      "quantity": "200000",
+      "currency": "USD",
+      "market_value": "202200.00",
+      "market_value_usd": "202200.00"
+    },
+    {
+      "account_id": "MW-7731",
+      "isin": "DE0007164600",
+      "quantity": "150",
+      "currency": "EUR",
+      "market_value": "37500.00",
+      "market_value_usd": "42000.00"
+    },
+    {
+      "account_id": "MW-7731",
+      "isin": "NL0010273215",
+      "quantity": "70",
+      "currency": "EUR",
+      "market_value": "49700.00",
+      "market_value_usd": "55664.00"
+    },
+    {
+      "account_id": "MW-7731",
+      "isin": "XS9999LIM016",
+      "quantity": "100000",
+      "currency": "USD",
+      "market_value": "101100.00",
+      "market_value_usd": "101100.00"
+    },
+    {
+      "account_id": "SC-4420",
+      "isin": "HK0000069689",
+      "quantity": "1500",
+      "currency": "HKD",
+      "market_value": "111000.00",
+      "market_value_usd": "14208.00"
+    },
+    {
+      "account_id": "SC-4420",
+      "isin": "KYG875721634",
+      "quantity": "150",
+      "currency": "HKD",
+      "market_value": "84000.00",
+      "market_value_usd": "10752.00"
+    },
+    {
+      "account_id": "SC-4420",
+      "isin": "SG1L01001701",
+      "quantity": "600",
+      "currency": "SGD",
+      "market_value": "30000.00",
+      "market_value_usd": "23100.00"
+    },
+    {
+      "account_id": "SC-4420",
+      "isin": "SG1T75931496",
+      "quantity": "2000",
+      "currency": "SGD",
+      "market_value": "8600.00",
+      "market_value_usd": "6622.00"
+    },
+    {
+      "account_id": "SC-4420",
+      "isin": "XS9999LIM016",
+      "quantity": "50000",
+      "currency": "USD",
+      "market_value": "50550.00",
+      "market_value_usd": "50550.00"
+    }
+  ],
+  "bond_total_face": "350000",
+  "payoff_before_approval": {
+    "realized_gain_by_account_usd": {
+      "HPB-001": "5500.00",
+      "MW-7731": "-6680.00",
+      "SC-4420": "19742.00"
+    },
+    "taxable_account_by_account_usd": "25242.00",
+    "taxable_consolidated_usd": "18562.00",
+    "tax_account_by_account_usd": "5048.40",
+    "tax_consolidated_usd": "3712.40",
+    "unevidenced_positions": [
+      {
+        "account_id": "SC-4420",
+        "isin": "KYG875721634",
+        "quantity": "150",
+        "market_value_usd": "10752.00"
+      },
+      {
+        "account_id": "SC-4420",
+        "isin": "SG1T75931496",
+        "quantity": "2000",
+        "market_value_usd": "6622.00"
+      }
+    ],
+    "unevidenced_market_value_usd": "17374.00",
+    "sales": [
+      {
+        "account_id": "SC-4420",
+        "bank": "straits",
+        "isin": "KYG875721634",
+        "date": "2025-03-20",
+        "quantity": "250",
+        "proceeds_usd": "16640.00",
+        "cost_usd": "0.00",
+        "gain_usd": "16640.00",
+        "units_with_unevidenced_basis": "250",
+        "lots_used": [
+          {
+            "acquired": "2024-06-14",
+            "quantity": "250",
+            "unit_cost": null
+          }
+        ]
+      },
+      {
+        "account_id": "HPB-001",
+        "bank": "harbour",
+        "isin": "US0378331005",
+        "date": "2025-04-22",
+        "quantity": "100",
+        "proceeds_usd": "20500.00",
+        "cost_usd": "15000.00",
+        "gain_usd": "5500.00",
+        "units_with_unevidenced_basis": "0",
+        "lots_used": [
+          {
+            "acquired": "2023-01-16",
+            "quantity": "100",
+            "unit_cost": "150"
+          }
+        ]
+      },
+      {
+        "account_id": "MW-7731",
+        "bank": "meridian",
+        "isin": "NL0010273215",
+        "date": "2025-06-17",
+        "quantity": "40",
+        "proceeds_usd": "27328.00",
+        "cost_usd": "34008.00",
+        "gain_usd": "-6680.00",
+        "units_with_unevidenced_basis": "0",
+        "lots_used": [
+          {
+            "acquired": "2024-03-11",
+            "quantity": "40",
+            "unit_cost": "780"
+          }
+        ]
+      },
+      {
+        "account_id": "SC-4420",
+        "bank": "straits",
+        "isin": "SG1L01001701",
+        "date": "2025-07-09",
+        "quantity": "400",
+        "proceeds_usd": "12936.00",
+        "cost_usd": "9834.00",
+        "gain_usd": "3102.00",
+        "units_with_unevidenced_basis": "0",
+        "lots_used": [
+          {
+            "acquired": "2023-05-08",
+            "quantity": "400",
+            "unit_cost": "33"
+          }
+        ]
+      }
+    ]
+  },
+  "payoff_after_basis_approval": {
+    "realized_gain_by_account_usd": {
+      "HPB-001": "5500.00",
+      "MW-7731": "-6680.00",
+      "SC-4420": "7582.00"
+    },
+    "taxable_account_by_account_usd": "13082.00",
+    "taxable_consolidated_usd": "6402.00",
+    "tax_account_by_account_usd": "2616.40",
+    "tax_consolidated_usd": "1280.40",
+    "unevidenced_positions": [
+      {
+        "account_id": "SC-4420",
+        "isin": "SG1T75931496",
+        "quantity": "2000",
+        "market_value_usd": "6622.00"
+      }
+    ],
+    "unevidenced_market_value_usd": "6622.00",
+    "sales": [
+      {
+        "account_id": "SC-4420",
+        "bank": "straits",
+        "isin": "KYG875721634",
+        "date": "2025-03-20",
+        "quantity": "250",
+        "proceeds_usd": "16640.00",
+        "cost_usd": "12160.00",
+        "gain_usd": "4480.00",
+        "units_with_unevidenced_basis": "0",
+        "lots_used": [
+          {
+            "acquired": "2023-02-10",
+            "quantity": "250",
+            "unit_cost": "380"
+          }
+        ]
+      },
+      {
+        "account_id": "HPB-001",
+        "bank": "harbour",
+        "isin": "US0378331005",
+        "date": "2025-04-22",
+        "quantity": "100",
+        "proceeds_usd": "20500.00",
+        "cost_usd": "15000.00",
+        "gain_usd": "5500.00",
+        "units_with_unevidenced_basis": "0",
+        "lots_used": [
+          {
+            "acquired": "2023-01-16",
+            "quantity": "100",
+            "unit_cost": "150"
+          }
+        ]
+      },
+      {
+        "account_id": "MW-7731",
+        "bank": "meridian",
+        "isin": "NL0010273215",
+        "date": "2025-06-17",
+        "quantity": "40",
+        "proceeds_usd": "27328.00",
+        "cost_usd": "34008.00",
+        "gain_usd": "-6680.00",
+        "units_with_unevidenced_basis": "0",
+        "lots_used": [
+          {
+            "acquired": "2024-03-11",
+            "quantity": "40",
+            "unit_cost": "780"
+          }
+        ]
+      },
+      {
+        "account_id": "SC-4420",
+        "bank": "straits",
+        "isin": "SG1L01001701",
+        "date": "2025-07-09",
+        "quantity": "400",
+        "proceeds_usd": "12936.00",
+        "cost_usd": "9834.00",
+        "gain_usd": "3102.00",
+        "units_with_unevidenced_basis": "0",
+        "lots_used": [
+          {
+            "acquired": "2023-05-08",
+            "quantity": "400",
+            "unit_cost": "33"
+          }
+        ]
+      }
+    ]
+  }
+}
