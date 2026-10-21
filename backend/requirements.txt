@@ -15,6 +15,8 @@ pdfplumber>=0.11
 # LLM
 anthropic>=0.40
 langgraph>=0.2
+# LLM (OpenRouter, OpenAI-compatible HTTP API)
+httpx>=0.27
 
 # Config
 python-dotenv>=1.0

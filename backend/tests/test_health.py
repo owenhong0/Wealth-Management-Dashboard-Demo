@@ -1,3 +1,4 @@
+import pipeline.run as runner
 from pipeline.run import run_pipeline
 
 
@@ -6,7 +7,8 @@ def test_health_before_any_run(client):
     assert body == {"status": "ok", "database": "ok", "latest_run": None}
 
 
-def test_health_reports_latest_run(client):
+def test_health_reports_latest_run(client, monkeypatch):
+    monkeypatch.setattr(runner, "STEPS", [])  # health is about the run record, not the steps
     run_id = run_pipeline()
     body = client.get("/api/health").get_json()
     assert body["latest_run"]["id"] == run_id

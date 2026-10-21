@@ -26,6 +26,6 @@ def _database_url() -> str:
 
 
 DATABASE_URL = _database_url()
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY") or None
-ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-5-5")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY") or None
+LLM_MODEL = os.getenv("LLM_MODEL", "anthropic/claude-sonnet-5.5")
 USE_CACHED_LLM = _flag("USE_CACHED_LLM", "true")

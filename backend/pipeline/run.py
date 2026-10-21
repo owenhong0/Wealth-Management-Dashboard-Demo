@@ -1,4 +1,4 @@
-"""Local pipeline runner. Rebuilds the database from data/generated/.
+"""Local pipeline runner: runs every step from data/generated/ and logs the run.
 
     cd backend && source .venv/bin/activate
     python -m pipeline.run
@@ -15,19 +15,25 @@ import time
 import traceback
 from typing import Any, Callable
 
-from db import reset_schema, session_scope
+from db import create_tables, session_scope
 from models import PipelineRun, RunStatus
 from models.base import utcnow
 from pipeline.parse_csv import parse_harbour
+from pipeline.parse_pdf import parse_meridian
+from pipeline.decisions import apply_decisions
+from pipeline.normalize import normalize
 from pipeline.parse_swift import parse_straits
+from pipeline.pnl import basis_and_pnl
+from pipeline.reconcile import reconcile
+from pipeline.secmaster import resolve_securities
 
 log = logging.getLogger("pipeline")
 
 Step = Callable[[dict[str, Any]], dict[str, Any]]
 
-# Still to add, in order: parse_meridian (after parse_harbour), normalize, load,
-# reconcile, basis, pnl, propose_fixes
-STEPS: list[Step] = [parse_harbour, parse_straits]
+# Still to add: load (after basis_and_pnl), propose_fixes (after reconcile)
+STEPS: list[Step] = [parse_harbour, parse_meridian, parse_straits, resolve_securities, normalize,
+                     reconcile, apply_decisions, basis_and_pnl]
 
 
 def start_run() -> int:
@@ -54,25 +60,42 @@ def summarize(event: dict[str, Any]) -> dict[str, Any]:
     return counts
 
 
-def run_pipeline() -> int:
-    reset_schema()  # every run rebuilds from the generated files
-    run_id = start_run()
-    log.info("run %d started (%d steps)", run_id, len(STEPS))
+class StepFailed(RuntimeError):
+    def __init__(self, step: str, event: dict[str, Any], cause: Exception):
+        super().__init__(f"{step}: {cause}")
+        self.step, self.event, self.cause = step, event, cause
 
-    event: dict[str, Any] = {"run_id": run_id, "step_seconds": {}}
+
+def run_steps(event: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Run every step in memory, no database. Used by the runner, the API and tests.
+
+    Pass {"decisions": {exception_id: {"status": "APPROVED", ...}}} to apply decisions.
+    """
+    event = {"step_seconds": {}, **(event or {})}
     for step in STEPS:
         name = step.__name__
         started = time.monotonic()
         try:
             event = step(event)
         except Exception as exc:
-            log.exception("run %d failed in %s", run_id, name)
             event["step_seconds"][name] = round(time.monotonic() - started, 2)
-            finish_run(run_id, RunStatus.FAILED, summarize(event),
-                       error=f"{name}: {exc}\n{traceback.format_exc(limit=5)}")
-            return run_id
+            raise StepFailed(name, event, exc) from exc
         event["step_seconds"][name] = round(time.monotonic() - started, 2)
-        log.info("run %d: %s done in %.2fs", run_id, name, event["step_seconds"][name])
+        log.info("%s done in %.2fs", name, event["step_seconds"][name])
+    return event
+
+
+def run_pipeline() -> int:
+    create_tables()  # never drops tables: the decision log must survive re-runs
+    run_id = start_run()
+    log.info("run %d started (%d steps)", run_id, len(STEPS))
+    try:
+        event = run_steps({"run_id": run_id})
+    except StepFailed as failed:
+        log.exception("run %d failed in %s", run_id, failed.step)
+        finish_run(run_id, RunStatus.FAILED, summarize(failed.event),
+                   error=f"{failed}\n{traceback.format_exc(limit=5)}")
+        return run_id
 
     finish_run(run_id, RunStatus.SUCCEEDED, summarize(event))
     log.info("run %d succeeded: %s", run_id, summarize(event))

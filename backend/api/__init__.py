@@ -37,8 +37,13 @@ def create_app(session_factory: Callable[[], Session] | None = None) -> Flask:
     CORS(app, resources={r"/api/*": {"origins": [o.strip() for o in origins.split(",") if o.strip()]}})
 
     # Imported here to avoid a circular import with the `api` package.
+    # Imported here to avoid a circular import with the `api` package.
+    from api.exceptions import bp as exceptions_bp
     from api.health import bp as health_bp
+    from api.ledger import bp as ledger_bp
+    from api.payoff import bp as payoff_bp
+    from api.sources import bp as sources_bp
 
-    for bp in (health_bp,):
+    for bp in (health_bp, exceptions_bp, payoff_bp, ledger_bp, sources_bp):
         app.register_blueprint(bp, url_prefix="/api")
     return app
