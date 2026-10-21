@@ -1,0 +1,345 @@
+{
+  "pdf_file": "meridian_statement.pdf",
+  "pdf_sha256": "1ae774b4f6b9821235f7deb8a066aede06d3faa725398bb8c16c75505c7a6db6",
+  "extracted_at": "2026-10-21T01:37:33+00:00",
+  "model": "anthropic/claude-haiku-5.5",
+  "usage": {
+    "prompt_tokens": 4008,
+    "completion_tokens": 4120,
+    "total_tokens": 8128,
+    "cost": 0.0024608,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0024608,
+      "upstream_inference_prompt_cost": 0.0004008,
+      "upstream_inference_completions_cost": 0.00206
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1627,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "attempts": 1,
+  "extraction": {
+    "account_id": "MW-7731",
+    "positions": [
+      {
+        "page": 1,
+        "line": 23,
+        "section": "closing",
+        "as_of_date": "2023-12-31",
+        "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+        "quantity": "100000",
+        "price": "100.20",
+        "currency": "USD",
+        "market_value": "100200.00"
+      },
+      {
+        "page": 1,
+        "line": 25,
+        "section": "closing",
+        "as_of_date": "2023-12-31",
+        "security_name": "SAP SE",
+        "quantity": "150",
+        "price": "139.00",
+        "currency": "EUR",
+        "market_value": "20850.00"
+      },
+      {
+        "page": 2,
+        "line": 9,
+        "section": "opening",
+        "as_of_date": "2023-12-31",
+        "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+        "quantity": "100000",
+        "price": "100.20",
+        "currency": "USD",
+        "market_value": "100200.00"
+      },
+      {
+        "page": 2,
+        "line": 11,
+        "section": "opening",
+        "as_of_date": "2023-12-31",
+        "security_name": "SAP SE",
+        "quantity": "150",
+        "price": "139.00",
+        "currency": "EUR",
+        "market_value": "20850.00"
+      },
+      {
+        "page": 2,
+        "line": 25,
+        "section": "closing",
+        "as_of_date": "2024-12-31",
+        "security_name": "ASML Holding N.V.",
+        "quantity": "120",
+        "price": "677.00",
+        "currency": "EUR",
+        "market_value": "81240.00"
+      },
+      {
+        "page": 2,
+        "line": 27,
+        "section": "closing",
+        "as_of_date": "2024-12-31",
+        "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+        "quantity": "100000",
+        "price": "99.40",
+        "currency": "USD",
+        "market_value": "99400.00"
+      },
+      {
+        "page": 2,
+        "line": 29,
+        "section": "closing",
+        "as_of_date": "2024-12-31",
+        "security_name": "SAP SE",
+        "quantity": "150",
+        "price": "236.00",
+        "currency": "EUR",
+        "market_value": "35400.00"
+      },
+      {
+        "page": 3,
+        "line": 8,
+        "section": "opening",
+        "as_of_date": "2024-12-31",
+        "security_name": "ASML Holding N.V.",
+        "quantity": "120",
+        "price": "677.00",
+        "currency": "EUR",
+        "market_value": "81240.00"
+      },
+      {
+        "page": 3,
+        "line": 10,
+        "section": "opening",
+        "as_of_date": "2024-12-31",
+        "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+        "quantity": "100000",
+        "price": "99.40",
+        "currency": "USD",
+        "market_value": "99400.00"
+      },
+      {
+        "page": 3,
+        "line": 12,
+        "section": "opening",
+        "as_of_date": "2024-12-31",
+        "security_name": "SAP SE",
+        "quantity": "150",
+        "price": "236.00",
+        "currency": "EUR",
+        "market_value": "35400.00"
+      },
+      {
+        "page": 3,
+        "line": 26,
+        "section": "closing",
+        "as_of_date": "2025-12-31",
+        "security_name": "ASML Holding N.V.",
+        "quantity": "70",
+        "price": "710.00",
+        "currency": "EUR",
+        "market_value": "49700.00"
+      },
+      {
+        "page": 3,
+        "line": 28,
+        "section": "closing",
+        "as_of_date": "2025-12-31",
+        "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+        "quantity": "100000",
+        "price": "101.10",
+        "currency": "USD",
+        "market_value": "101100.00"
+      },
+      {
+        "page": 3,
+        "line": 30,
+        "section": "closing",
+        "as_of_date": "2025-12-31",
+        "security_name": "SAP SE",
+        "quantity": "150",
+        "price": "250.00",
+        "currency": "EUR",
+        "market_value": "37500.00"
+      }
+    ],
+    "transactions": [
+      {
+        "page": 1,
+        "line": 11,
+        "trade_date": "2023-04-03",
+        "security_name": "SAP SE",
+        "type": "Purchase",
+        "quantity": "150",
+        "price": "115.00",
+        "currency": "EUR",
+        "amount": "-17250.00"
+      },
+      {
+        "page": 1,
+        "line": 12,
+        "trade_date": "2023-05-15",
+        "security_name": "SAP SE",
+        "type": "Dividend",
+        "quantity": "150",
+        "price": null,
+        "currency": "EUR",
+        "amount": "307.50"
+      },
+      {
+        "page": 1,
+        "line": 14,
+        "trade_date": "2023-07-20",
+        "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+        "type": "Purchase",
+        "quantity": "100000",
+        "price": "98.75",
+        "currency": "USD",
+        "amount": "-98750.00"
+      },
+      {
+        "page": 1,
+        "line": 17,
+        "trade_date": "2023-09-15",
+        "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+        "type": "Coupon",
+        "quantity": "100000",
+        "price": null,
+        "currency": "USD",
+        "amount": "2125.00"
+      },
+      {
+        "page": 1,
+        "line": 19,
+        "trade_date": "2023-12-29",
+        "security_name": "Management fee",
+        "type": "Fee",
+        "quantity": null,
+        "price": null,
+        "currency": "EUR",
+        "amount": "-450.00"
+      },
+      {
+        "page": 2,
+        "line": 14,
+        "trade_date": "2024-03-11",
+        "security_name": "ASML Holding N.V.",
+        "type": "Purchase",
+        "quantity": "120",
+        "price": "780.00",
+        "currency": "EUR",
+        "amount": "-93600.00"
+      },
+      {
+        "page": 2,
+        "line": 16,
+        "trade_date": "2024-03-15",
+        "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+        "type": "Coupon",
+        "quantity": "100000",
+        "price": null,
+        "currency": "USD",
+        "amount": "2125.00"
+      },
+      {
+        "page": 2,
+        "line": 18,
+        "trade_date": "2024-05-17",
+        "security_name": "SAP SE",
+        "type": "Dividend",
+        "quantity": "150",
+        "price": null,
+        "currency": "EUR",
+        "amount": "330.00"
+      },
+      {
+        "page": 2,
+        "line": 20,
+        "trade_date": "2024-09-15",
+        "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+        "type": "Coupon",
+        "quantity": "100000",
+        "price": null,
+        "currency": "USD",
+        "amount": "2125.00"
+      },
+      {
+        "page": 2,
+        "line": 22,
+        "trade_date": "2024-12-30",
+        "security_name": "Management fee",
+        "type": "Fee",
+        "quantity": null,
+        "price": null,
+        "currency": "EUR",
+        "amount": "-450.00"
+      },
+      {
+        "page": 3,
+        "line": 16,
+        "trade_date": "2025-03-15",
+        "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+        "type": "Coupon",
+        "quantity": "100000",
+        "price": null,
+        "currency": "USD",
+        "amount": "2125.00"
+      },
+      {
+        "page": 3,
+        "line": 18,
+        "trade_date": "2025-05-16",
+        "security_name": "SAP SE",
+        "type": "Dividend",
+        "quantity": "150",
+        "price": null,
+        "currency": "EUR",
+        "amount": "352.50"
+      },
+      {
+        "page": 3,
+        "line": 19,
+        "trade_date": "2025-06-17",
+        "security_name": "ASML Holding N.V.",
+        "type": "Sale",
+        "quantity": "40",
+        "price": "610.00",
+        "currency": "EUR",
+        "amount": "24400.00"
+      },
+      {
+        "page": 3,
+        "line": 21,
+        "trade_date": "2025-09-15",
+        "security_name": "Pacific Harbour Infrastructure Limited 4.250% Senior Notes due 15 March 2030",
+        "type": "Coupon",
+        "quantity": "100000",
+        "price": null,
+        "currency": "USD",
+        "amount": "2125.00"
+      },
+      {
+        "page": 3,
+        "line": 23,
+        "trade_date": "2025-12-30",
+        "security_name": "Management fee",
+        "type": "Fee",
+        "quantity": null,
+        "price": null,
+        "currency": "EUR",
+        "amount": "-450.00"
+      }
+    ]
+  }
+}

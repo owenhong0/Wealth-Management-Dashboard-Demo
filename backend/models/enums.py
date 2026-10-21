@@ -9,3 +9,8 @@ class RunStatus(str, enum.Enum):
     RUNNING = "running"
     SUCCEEDED = "succeeded"
     FAILED = "failed"
+
+
+class DecisionStatus(str, enum.Enum):
+    APPROVED = "APPROVED"
+    OVERRIDDEN = "OVERRIDDEN"

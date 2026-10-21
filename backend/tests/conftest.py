@@ -12,9 +12,11 @@ os.environ["DATABASE_URL"] = f"sqlite:///{_TMP / 'test.db'}"
 
 @pytest.fixture()
 def fresh_db():
+    from api.state import clear_cache
     from db import reset_schema
 
     reset_schema()
+    clear_cache()
 
 
 @pytest.fixture()

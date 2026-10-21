@@ -14,6 +14,7 @@ from __future__ import annotations
 import enum
 from datetime import date
 from decimal import Decimal
+from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -118,19 +119,27 @@ class PositionSnapshot(_Record):
     price: Decimal | None = None
     market_value: Decimal | None = None   # in `currency`
     currency: str
+    fx_to_base: Decimal | None = None     # set by normalize
 
 
 class ReconException(BaseModel):
-    """Not frozen: status and decision fields change when a human decides."""
+    """Not frozen: status and decision fields change when a human decides.
+
+    `fix` is the machine-readable action applied if a human approves, e.g.
+    {"action": "carry_basis", ...}. None means there is nothing safe to apply
+    automatically: approving only records that a person reviewed it.
+    """
 
     exception_id: str
     type: ExceptionType
     account_id: str
     isin: str | None = None
     summary: str
+    details: dict[str, Any] = {}
     affected_txn_ids: list[str] = []
     evidence: list[SourceRef] = []
     proposed_fix: str | None = None
+    fix: dict[str, Any] | None = None
     confidence: float | None = None
     status: ExceptionStatus = ExceptionStatus.OPEN
     decided_by: str | None = None
