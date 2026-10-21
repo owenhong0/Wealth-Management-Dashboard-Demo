@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* One set of semantic colors. Components only use these, so light and dark
+   mode can't drift apart. */
+@theme {
+  --color-canvas: #f6f7f9;
+  --color-panel: #ffffff;
+  --color-ink: #111827;
+  --color-muted: #6b7280;
+  --color-line: #e5e7eb;
+  --color-accent: #1e40af;
+  --color-on-accent: #ffffff;
+  --color-accent-soft: #e0e7ff;
+  --color-warn: #c2410c;
+  --color-warn-soft: #ffedd5;
+
+  /* Liability severity and the CDR3 highlight */
+  --color-sev-high: #b91c1c;
+  --color-sev-medium: #c2410c;
+  --color-sev-low: #a16207;
+  --color-cdr3: #dbeafe;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-canvas: #0b0f17;
+    --color-panel: #151b26;
+    --color-ink: #e5e7eb;
+    --color-muted: #9ca3af;
+    --color-line: #273244;
+    --color-accent: #60a5fa;
+    --color-on-accent: #0b0f17;
+    --color-accent-soft: #1e2f4d;
+    --color-warn: #fdba74;
+    --color-warn-soft: #3b2414;
+
+    --color-sev-high: #f87171;
+    --color-sev-medium: #fb923c;
+    --color-sev-low: #facc15;
+    --color-cdr3: #1e3a5f;
+  }
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
